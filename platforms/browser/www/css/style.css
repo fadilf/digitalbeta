@@ -1,0 +1,68 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Calibri';
+}
+
+header {
+    background: #2388af;
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 0.5em;
+    box-shadow: #000 0 -10px 17px 12px;
+}
+
+#backbutton {
+    display: block;
+    position: absolute;
+    margin: 1em;
+    color: #fff;
+    font-weight: 900;
+}
+
+.homelist {
+    padding: 0;
+    margin: 0;
+}
+
+.homelist li {
+    list-style: none;
+    display: block;
+    margin: 1.3em;
+    padding: 1.6em 1em;
+    background: #2388af;
+    color: #fff;
+    box-shadow: #000 0 0 20px -5px;
+    border-radius: 4px;
+}
+
+.homelist li .icon {
+    height: 3.5em;
+    width: 3.5em;
+    display: inline-block;
+    margin-right: 1em;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: #fff;
+    background-size: 2.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.homelist li .title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6em;
+}
+
+.homelist li#listings .icon {
+    background-image: url('../img/pin.png');
+}
+
+.homelist li#requests .icon {
+    background-image: url('../img/chat.png');
+}
