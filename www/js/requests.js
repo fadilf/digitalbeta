@@ -1,7 +1,7 @@
 // Wait for DOM to load
 $(window).ready(function(){
     var page = 1;
-    var number = 4;
+    var number = 9;
     var first = true;
     
     // Get listing function
@@ -27,7 +27,8 @@ $(window).ready(function(){
                     datalen = data.length;
                     for(var i=0;i<datalen;i++){
                         var item = data[i];
-                        $("#listings").append('<li z-depth="2" class="listingitem" itemid="'+item.ID+'"><div class="listinginfo"><div class="listingtitle">'+item.Title+'</div><div class="listingdescription">'+item.Description+'</div></div></li>');
+                        var mailto = "mailto:"+item.Email+"?subject="+encodeURIComponent('Response to: "'+item.Title+'" on Freecycle Dubai');
+                        $("#listings").append('<li z-depth="2" class="listingitem" itemid="'+item.ID+'"><div class="listinginfo"><div class="listingtitle">'+item.Title+'</div><div class="listingdescription">'+item.Description+'</div><a class="listingemail" href="'+mailto+'">Contact</a></div></li>');
                     }
                 }
             }
@@ -44,6 +45,14 @@ $(window).ready(function(){
     
     $("#add").click(function(){
         $("#addform").css("display", "block");
+    });
+    
+    $("#user").click(function(){
+        window.location.href = "userrequests.html";
+    });
+    
+    $("#closeadd").click(function(){
+        $("#addform").css("display", "none");
     });
     
     $("#addlisting").submit(function(){
