@@ -1,7 +1,7 @@
 // Wait for DOM to load
 $(window).ready(function(){
     var page = 1;
-    var number = 3;
+    var number = 7;
     var first = true;
     
     // Get listing function
@@ -27,7 +27,8 @@ $(window).ready(function(){
                     datalen = data.length;
                     for(var i=0;i<datalen;i++){
                         var item = data[i];
-                        $("#listings").append('<li z-depth="2" class="listingitem" itemid="'+item.ID+'"><div class="listingthumb" style="background-image:url('+item.Thumbnail+')"></div><div class="listinginfo"><div class="listingtitle">'+item.Title+'</div><div class="listingdescription">'+item.Description+'</div></div></li>');
+                        var mailto = "mailto:"+item.Email+"?subject="+encodeURIComponent('Response to: "'+item.Title+'" on Freecycle Dubai');
+                        $("#listings").append('<li z-depth="2" class="listingitem"><div class="listingthumb" style="background-image:url('+item.Thumbnail+')"></div><div class="listinginfo"><div class="listingtitle">'+item.Title+'</div><div class="listingdescription">'+item.Description+'</div><a class="listingemail" href="'+mailto+'">Contact</a></div></li>');
                     }
                 }
             }
@@ -42,34 +43,34 @@ $(window).ready(function(){
         getlistings();
     });
     
+    $("#addlisting").attr("action", localStorage.getItem("serverurl"));
+    $('input[name="Username"]').attr("value", localStorage.getItem("Username"));
+    $('input[name="Password"]').attr("value", localStorage.getItem("Password"));
+    $('input[name="Redirect"]').attr("value", window.location.href);
+    
     $("#add").click(function(){
         $("#addform").css("display", "block");
     });
+    $("#add").click();
     
-    $("#addlisting").submit(function(){
+    $("#user").click(function(){
+        window.location.href = "userlistings.html";
+    });
+    
+    $("#closeadd").click(function(){
+        $("#addform").css("display", "none");
+    });
+    
+    $("#submit").click(function(){
+        var Title = $('input[name="Title"]').val();
+        var Description = $('input[name="Description"]').val();
         event.preventDefault();
-        var title = $("#addlisting input[name='Title']").val();
-        var description = $("#addlisting textarea[name='Description']").val();
-        var thumbnail = $("#addlisting input[name='Thumbnail']").val();
-        $.post(
-            localStorage.getItem("serverurl"),
-            {
-                Username: localStorage.getItem("Username"),
-                Password: localStorage.getItem("Password"),
-                Function: "create_listing",
-                Title: title,
-                Description: description,
-                Thumbnail: thumbnail
-            },
-            function(data){
-                if(data == "Error code: 68"){
-                    alert("No Title/Description.");
-                } else if(data == "true") {
-                    window.location.href = "listings.html";
-                } else {
-                    alert("An error occurred.");
-                }
-            }
-        );
+        if(Title === ""){
+            alert("No title given.");
+        } else if(Description === ""){
+            alert("No description given.");
+        } else {
+            console.log($("#addlisting").submit());
+        }
     });
 });

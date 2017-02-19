@@ -1,6 +1,6 @@
 /* Blue: #2388af
-huehuehue
 */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -29,11 +29,12 @@ body {
     display: block;
     position: absolute;
     margin: 0;
-    font-family: 'Calibri';
+    font-family: 'Noto Sans', sans-serif;
     padding-top: 3.5em;
     height: 100%;
     width: 100%;
     background-color: #eee;
+    font-size: 0.9em;
 }
 
 header {
@@ -56,9 +57,9 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0.1em 0.4em;
+    padding: 0 0.4em .15em 0.4em;
     color: #fff;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 2em;
     z-index: 3;
 }
@@ -279,7 +280,29 @@ button {
     color: #323232;
 }
 
-#add {
+.listingemail {
+    color: #2489b0;
+    text-decoration: none;
+}
+
+.delete {
+    position: absolute;
+    width: calc(100% - 2em);
+    height: 3em;
+    text-align: right;
+}
+
+.deletebutton {
+    top: 0.5em;
+    padding: 0.5em;
+    position: relative;
+    color: orangered;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.add {
     display: block;
     border-radius: 50%;
     border: 0;
@@ -288,11 +311,21 @@ button {
     width: 1.4em;
     position: fixed;
     background: #955643;
-    right: 10px;
-    bottom: 10px;
+    right: 0.5em;
+    bottom: 0.5em;
     color: #fff;
     font-size: 2.7em;
-    font-weight: 200;
+}
+
+#user {
+    bottom: 2.2em;
+}
+
+#user svg {
+    display: inline-block;
+    height: 0.75em;
+    width: 0.75em;
+    fill: currentColor;    
 }
 
 #addform {
@@ -304,6 +337,7 @@ button {
     left: 0;
     background: #eee;
     z-index: 3;
+    text-align: center;
 }
 
 #addlisting {
@@ -314,6 +348,10 @@ button {
     padding: 1em;
     border-radius: 2px;
     max-width: 30em;
+}
+
+#addform button {
+    display: inline-block;
 }
 
 input[type="file"] {

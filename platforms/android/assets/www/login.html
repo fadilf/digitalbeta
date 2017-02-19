@@ -5,7 +5,6 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <title>Login</title>
     </head>
@@ -18,12 +17,14 @@
                     <span class="label">Username</span>
                     <input z-depth="1" type="text" name="username" value="fadil" />
                     <span class="label">Password</span>
-                    <input z-depth="1" type="password" name="password" value="securemuch" />
+                    <input z-depth="1" type="password" name="password" value="password" />
                     <button z-depth="1" type="submit">Submit</button>
                     <label for="checkswitch" class="switchform">No account? Sign up instead!</label>
                 </form>
                 <form action="#" id="signup" class="form" z-depth="2">
                     <span class="formhead">Sign Up</span>
+                    <span class="label">Email</span>
+                    <input z-depth="1" type="text" name="email" />
                     <span class="label">Username</span>
                     <input z-depth="1" type="text" name="username" />
                     <span class="label">Password</span>
