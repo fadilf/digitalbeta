@@ -51,7 +51,9 @@ $(window).ready(function(){
     $("#add").click(function(){
         $("#addform").css("display", "block");
     });
-    $("#add").click();
+//    setTimeout(function(){
+//        $("#add").click();
+//    },1000);
     
     $("#user").click(function(){
         window.location.href = "userlistings.html";
@@ -61,16 +63,15 @@ $(window).ready(function(){
         $("#addform").css("display", "none");
     });
     
-    $("#submit").click(function(){
-        var Title = $('input[name="Title"]').val();
-        var Description = $('input[name="Description"]').val();
-        event.preventDefault();
-        if(Title === ""){
-            alert("No title given.");
-        } else if(Description === ""){
-            alert("No description given.");
-        } else {
-            console.log($("#addlisting").submit());
-        }
+    $("#addlisting").submit(function(){
+        if($('input[name="Title"]').val() === ""){
+            alert("No title given");
+            event.preventDefault();
+        } else if($('textarea[name="Description"]').val() === ""){
+            alert("No description given");
+            event.preventDefault();
+        }/* else {
+            $("#addform").css("display", "none");
+        }*/
     });
 });

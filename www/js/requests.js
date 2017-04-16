@@ -59,24 +59,28 @@ $(window).ready(function(){
         event.preventDefault();
         var title = $("#addlisting input[name='Title']").val();
         var description = $("#addlisting textarea[name='Description']").val();
-        $.post(
-            localStorage.getItem("serverurl"),
-            {
-                Username: localStorage.getItem("Username"),
-                Password: localStorage.getItem("Password"),
-                Function: "create_request",
-                Title: title,
-                Description: description
-            },
-            function(data){
-                if(data == "Error code: 95"){
-                    alert("No Title/Description.");
-                } else if(data == "true") {
-                    window.location.href = "requests.html";
-                } else {
-                    alert("An error occurred.");
+        if(title === ""){
+            alert("No title given");
+        } else if(description === "") {
+            alert("No description given");
+        } else {
+            $.post(
+                localStorage.getItem("serverurl"),
+                {
+                    Username: localStorage.getItem("Username"),
+                    Password: localStorage.getItem("Password"),
+                    Function: "create_request",
+                    Title: title,
+                    Description: description
+                },
+                function(data){
+                    if(data == "true") {
+                        window.location.href = "requests.html";
+                    } else {
+                        alert("An error occurred.");
+                    }
                 }
-            }
-        );
+            );
+        }
     });
 });
